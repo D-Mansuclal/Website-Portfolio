@@ -11,6 +11,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.portfolio.dmansuclal.model.User;
 
+/**
+ * Custom user details class
+ */
 public class IUserDetails implements UserDetails{
 	
 	static final long serialVersionUID = 1L;
