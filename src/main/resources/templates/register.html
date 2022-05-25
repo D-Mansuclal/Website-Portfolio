@@ -12,12 +12,19 @@
 <body>
     <form th:action="@{/register-user}" th:object="${user}" method="POST">
         <input th:field="*{firstname}" type="text" name="firstname" placeholder="First Name">
+        <p th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></p>
         <input th:field="*{lastname}" type="text" name="lastname" placeholder="Last Name">
+        <p th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></p>
         <input th:field="*{email}" type="text" name="email" placeholder="Email Address">
+        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
         <input th:field="*{username}" type="text" name="username" placeholder="Username">
+        <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
         <input th:field="*{password}" type="password" name="password" placeholder="Password">
+        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
         <input th:field="*{confirmPassword}" type="password" placeholder="Confirm Password">
+        <p th:if="*{confirmPassword != password}">Password does not match.</p>
         <input type="submit" value="Register">
+        <a href="/login">Already a user? Click here to login!</a>
     </form>
 </body>
 

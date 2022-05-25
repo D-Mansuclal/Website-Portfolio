@@ -27,13 +27,12 @@ public class WebsitePortfolioApplication implements ApplicationRunner {
 	public void run(ApplicationArguments args) throws Exception {
 		
 		User user = new User();
-		user.setUsername("root");
-		user.setPassword(pEncoder.encode("password"));
-		user.setConfirmPassword(pEncoder.encode("password"));
+		user.setUsername("admin");
+		user.setPassword(pEncoder.encode("TestPassword,33"));
 		user.setFirstname("John");
 		user.setLastname("Smith");
 		user.setEmail("john.smith@examplemail.com");
-		user.setRoles("ROLE_ADMIN");
+		user.setRoles("ADMIN");
 		userRepository.save(user);
 	}
 
