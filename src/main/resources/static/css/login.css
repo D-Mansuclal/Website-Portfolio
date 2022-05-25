@@ -37,6 +37,12 @@ form {
     text-align: center;
 }
 
+.error-short {
+    grid-column: 1 / -1;
+    width: 100%;
+    text-align: center;
+}
+
 .error-message {
     padding: 2%;
     background: #ff3333;
@@ -60,7 +66,7 @@ input[type=password] {
     grid-column: 1 / -1;
     background: #262e49;
     border-radius: 7px;
-    padding: 14px 10px;
+    padding: 2%;
     width: 75%;
     height: 75%;
     border: 1px solid #5c6bc0;
@@ -78,6 +84,7 @@ input[type=submit] {
     font-size: 1.25rem;
     transition: 0.5s;
     margin-top: 5%;
+    cursor: pointer;
 }
 
 input[type=submit]:hover {
@@ -91,6 +98,7 @@ input[type=submit]:active {
 a {
     color: #5c7fda;
     text-decoration: none;
+    transition: 0.3s;
 }
 
 a:hover {
