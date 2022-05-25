@@ -1,11 +1,15 @@
 package com.portfolio.dmansuclal.controller;
 
+import java.security.Principal;
+
 import javax.validation.Valid;
 
 import com.portfolio.dmansuclal.model.User;
 import com.portfolio.dmansuclal.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,24 +30,34 @@ public class UserController {
      * Login page mapping for GET requests to /login
      * @param user the model Attribute
      * @param model the model for user
-     * @return login page
+     * @return login page or redirect to home page if a user is logged in
      */
     @GetMapping("/login")
     public String login(@ModelAttribute User user, Model model) {
+        Principal principal = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("user", new User());
-        return "login";
+
+        if (principal == null || principal instanceof AnonymousAuthenticationToken) {
+            return "login";
+        }
+        return "redirect:/";
     }
 
     /**
      * Register page mapping for GET requests to /register
      * @param user the model attribute
      * @param model the model for user
-     * @return register page
+     * @return register page or redirect to home page if a user is logged in
      */
     @GetMapping("/register")
     public String register(@ModelAttribute User user, Model model) {
+        Principal principal = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("user", new User());
-        return "register";
+        
+        if (principal == null || principal instanceof AnonymousAuthenticationToken) {
+            return "register";
+        }
+        return "redirect:/";
     }
 
     /**
