@@ -1,12 +1,38 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <title>Home</title>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="navbar">
+            <div class="navbar-header">
+                <h1>Website</h1>
+            </div>
+            <div class="navbar-links">
+                <a href="/" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Shop</a>
+                <a href="#" class="nav-link">Contact</a>
+            </div>
+            <div class="navbar-account" sec:authorize="!isAuthenticated()">
+                <a href="login" class="nav-link">Login</a>
+                <a href="register" class="nav-link">Register</a>
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" class="bi bi-cart-fill" viewBox="0 0 16 16">
+                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                  </svg></a>
+            </div>
+            <div class="navbar-account" sec:authorize="isAuthenticated()">
+                <a href="#" class="nav-link"th:text="${#authentication.getPrincipal().getUsername()}"></a>
+                <!-- <a href="logout" class="nav-link">Logout</a> -->
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" class="bi bi-cart-fill" viewBox="0 0 16 16">
+                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                  </svg></a>
+        </div>
+    </div>
+
 </body>
 </html>
